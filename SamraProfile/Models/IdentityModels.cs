@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace SamraProfile.Models
 {
@@ -19,8 +20,15 @@ namespace SamraProfile.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+     
+
+        static ApplicationDbContext()
+        {
+            Database.SetInitializer(new MySqlInitializer());
+        }
+
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("MySqlConnection", throwIfV1Schema: false)
         {
         }
 

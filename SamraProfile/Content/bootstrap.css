@@ -52,7 +52,7 @@ audio:not([controls]) {
 }
 
 html {
-  font-family: sans-serif;
+  font-family: sans-serif !important;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -103,7 +103,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, serif;
+  font-family: monospace, serif !important;
   font-size: 1em;
 }
 
@@ -311,7 +311,7 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: /*"Helvetica Neue", Helvetica, Arial, sans-serif;*/Verdana;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -473,7 +473,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: /*"Helvetica Neue", Helvetica, Arial, sans-serif;*/Verdana;
   font-weight: 500;
   line-height: 1.1;
 }
@@ -712,7 +712,7 @@ address {
 
 code,
 pre {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace !important;
 }
 
 code {
@@ -4389,7 +4389,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-brand {
-  color: #777777;
+  color: #777777 !important;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -4506,7 +4506,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: #999999 !important;
 }
 
 .navbar-inverse .navbar-brand:hover,
@@ -4516,7 +4516,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-text {
-  color: #999999;
+  color: #999999 !important;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -6125,7 +6125,7 @@ body.modal-open,
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
-  font-family: serif;
+  font-family: serif !important;
 }
 
 .carousel-control .icon-prev:before {

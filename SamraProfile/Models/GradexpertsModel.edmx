@@ -1,0 +1,1306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GradexpertModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="accesslevels">
+          <Key>
+            <PropertyRef Name="FunctionID" />
+          </Key>
+          <Property Name="FunctionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FunctionCode" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="AccessLevelRequired" Type="int" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="Header" Type="bool" />
+        </EntityType>
+        <EntityType Name="assessmentresultcalculated">
+          <Key>
+            <PropertyRef Name="ResultTypeCalcID" />
+          </Key>
+          <Property Name="ResultTypeCalcID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentID" Type="int" />
+          <Property Name="ResultOrder" Type="float" />
+          <Property Name="CalculatedTypeID" Type="int" />
+          <Property Name="ShortDescription" Type="varchar" MaxLength="50" />
+          <Property Name="LongDescription" Type="varchar" MaxLength="255" />
+          <Property Name="ResultTypeID1" Type="int" />
+          <Property Name="ResultTypeID2" Type="int" />
+          <Property Name="ResultTypeID3" Type="int" />
+          <Property Name="ResultTypeID4" Type="int" />
+          <Property Name="ResultTypeID5" Type="int" />
+          <Property Name="ResultTypeID6" Type="int" />
+          <Property Name="ResultTypeID7" Type="int" />
+          <Property Name="ResultTypeID8" Type="int" />
+          <Property Name="ResultTypeID9" Type="int" />
+          <Property Name="ResultTypeID10" Type="int" />
+          <Property Name="ResultTypeID11" Type="int" />
+          <Property Name="Percentage" Type="varchar" MaxLength="6" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="OperatorTypeID1" Type="int" />
+          <Property Name="Value1" Type="varchar" MaxLength="50" />
+          <Property Name="OperatorTypeID2" Type="int" />
+          <Property Name="Value2" Type="varchar" MaxLength="50" />
+          <Property Name="OperatorTypeID3" Type="int" />
+          <Property Name="Value3" Type="varchar" MaxLength="50" />
+          <Property Name="OperatorTypeID4" Type="int" />
+          <Property Name="Value4" Type="varchar" MaxLength="50" />
+          <Property Name="FinalResult" Type="varchar" MaxLength="255" />
+          <Property Name="FinalColour" Type="int" />
+          <Property Name="FinalValueToGraph" Type="varchar" MaxLength="20" />
+          <Property Name="ColumnAlignment" Type="int" />
+          <Property Name="ColumnWidth" Type="int" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="FormattingEnabled" Type="bool" />
+        </EntityType>
+        <EntityType Name="assessmentresulttypes">
+          <Key>
+            <PropertyRef Name="AssessmentID" />
+            <PropertyRef Name="ResultTypeID" />
+          </Key>
+          <Property Name="AssessmentID" Type="int" Nullable="false" />
+          <Property Name="ResultType" Type="int" />
+          <Property Name="ResultTypeID" Type="int" Nullable="false" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="UseDefaultValues" Type="bool" />
+          <Property Name="MinNumber" Type="float" />
+          <Property Name="MaxNumber" Type="float" />
+          <Property Name="DecimalPoints" Type="int" />
+          <Property Name="AllowedValues" Type="longtext" />
+          <Property Name="Updated" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="ShowToParent" Type="bool" />
+          <Property Name="ShowToParentGraph" Type="bool" />
+          <Property Name="FormattingEnabled" Type="bool" />
+        </EntityType>
+        <EntityType Name="assessmentresultvalues">
+          <Key>
+            <PropertyRef Name="ResultValueID" />
+          </Key>
+          <Property Name="ResultValueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResultID" Type="int" />
+          <Property Name="ResultTypeID" Type="int" />
+          <Property Name="ResultValue" Type="varchar" MaxLength="255" />
+          <Property Name="LastEdited" Type="datetime" Precision="0" />
+          <Property Name="OfflineAdd" Type="bool" />
+          <Property Name="OfflineEdit" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+        </EntityType>
+        <EntityType Name="assessments">
+          <Key>
+            <PropertyRef Name="AssessmentID" />
+          </Key>
+          <Property Name="AssessmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentAssessmentID" Type="int" />
+          <Property Name="Header" Type="bool" />
+          <Property Name="HeaderID" Type="int" />
+          <Property Name="Composite" Type="bool" />
+          <Property Name="SubAssessment" Type="bool" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="AssessmentCode" Type="varchar" MaxLength="20" />
+          <Property Name="MaximumScore" Type="float" />
+          <Property Name="DecimalPoints" Type="int" />
+          <Property Name="AccessLevelRequired" Type="varchar" MaxLength="50" />
+          <Property Name="AllowAttachments" Type="bool" />
+          <Property Name="StoreAttachments" Type="bool" />
+          <Property Name="ExtendedDescription" Type="longtext" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="NotesMaxLength" Type="int" />
+          <Property Name="StudentReportItem" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="DefaultColour" Type="int" />
+          <Property Name="ShowToParent" Type="bool" />
+        </EntityType>
+        <EntityType Name="attendance">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+          </Key>
+          <Property Name="AttendanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttendanceDate" Type="datetime" Precision="0" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="Status_AM" Type="tinyint" />
+          <Property Name="ReasonID_AM" Type="int" />
+          <Property Name="Status_PM" Type="tinyint" />
+          <Property Name="ReasonID_PM" Type="int" />
+        </EntityType>
+        <EntityType Name="attendancereason">
+          <Key>
+            <PropertyRef Name="ReasonID" />
+          </Key>
+          <Property Name="ReasonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReasonCode" Type="varchar" MaxLength="5" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="Type" Type="int" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="CountToAbsenceTotals" Type="bool" />
+        </EntityType>
+        <EntityType Name="classes">
+          <Key>
+            <PropertyRef Name="classID" />
+          </Key>
+          <Property Name="classID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grade" Type="int" />
+          <Property Name="classname" Type="varchar" MaxLength="50" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+        </EntityType>
+        <EntityType Name="indicators">
+          <Key>
+            <PropertyRef Name="IndicatorID" />
+          </Key>
+          <Property Name="IndicatorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IndicatorDescription" Type="varchar" MaxLength="255" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="Header" Type="bool" />
+          <Property Name="HeaderID" Type="int" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="FinalColour" Type="int" />
+        </EntityType>
+        <EntityType Name="mapdetail">
+          <Key>
+            <PropertyRef Name="MapDetailID" />
+          </Key>
+          <Property Name="MapDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MapHeaderID" Type="int" />
+          <Property Name="AssessmentID" Type="int" />
+          <Property Name="ResultTypeID" Type="int" />
+          <Property Name="ColourFormatType" Type="int" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="YearID" Type="int" />
+          <Property Name="Term" Type="int" />
+          <Property Name="Semester" Type="int" />
+          <Property Name="Attendance" Type="bool" />
+          <Property Name="EffectSize" Type="bool" />
+          <Property Name="Growth" Type="bool" />
+          <Property Name="IndicatorID" Type="int" />
+          <Property Name="TeacherNameRequired" Type="tinyint" />
+          <Property Name="AllowEdit" Type="tinyint" />
+          <Property Name="Week" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="PageHeaderID" Type="int" />
+          <Property Name="IncludePreviousTerms" Type="int" />
+          <Property Name="IncludePreviousSemesters" Type="int" />
+          <Property Name="ResultTypeIDs" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="mapheader">
+          <Key>
+            <PropertyRef Name="MapHeaderID" />
+          </Key>
+          <Property Name="MapHeaderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="ExtendedDescription" Type="longtext" />
+          <Property Name="AvailableToAll" Type="bool" />
+          <Property Name="YearID" Type="int" />
+          <Property Name="Term" Type="int" />
+          <Property Name="Semester" Type="int" />
+          <Property Name="HideHeaders" Type="bool" />
+          <Property Name="Week" Type="int" />
+          <Property Name="UserIDs" Type="longtext" />
+          <Property Name="Month" Type="int" />
+          <Property Name="DefaultReportLayoutID" Type="int" />
+          <Property Name="OfflineEdit" Type="bool" />
+          <Property Name="OfflineAdd" Type="bool" />
+          <Property Name="LastEdited" Type="datetime" Precision="0" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="MapGroupID" Type="int" />
+          <Property Name="ShowStdDeviation" Type="bool" />
+          <Property Name="ShowMedian" Type="bool" />
+          <Property Name="ShowMean" Type="bool" />
+        </EntityType>
+        <EntityType Name="results">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="YearID" Type="int" />
+          <Property Name="Term" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Week" Type="int" />
+          <Property Name="Semester" Type="int" />
+          <Property Name="AssessmentID" Type="int" />
+          <Property Name="AssessmentDate" Type="datetime" Precision="0" />
+          <Property Name="DateEntered" Type="datetime" Precision="0" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+          <Property Name="Locked" Type="bool" />
+          <Property Name="NotesLong" Type="longtext" />
+          <Property Name="NoteHeaderID" Type="int" />
+          <Property Name="LastEdited" Type="datetime" Precision="0" />
+          <Property Name="ImportID" Type="int" />
+          <Property Name="OfflineAdd" Type="bool" />
+          <Property Name="OfflineEdit" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+        </EntityType>
+        <EntityType Name="resulttypes">
+          <Key>
+            <PropertyRef Name="ResultTypeID" />
+          </Key>
+          <Property Name="ResultTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShortDescription" Type="varchar" MaxLength="10" />
+          <Property Name="LongDescription" Type="varchar" MaxLength="255" />
+          <Property Name="ExtendedDescription" Type="longtext" />
+          <Property Name="AllowNumber" Type="bool" />
+          <Property Name="AllowLetter" Type="bool" />
+          <Property Name="AllowAll" Type="bool" />
+          <Property Name="AgeLevel" Type="bool" />
+          <Property Name="SelectFromList" Type="bool" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="MinNumber" Type="float" />
+          <Property Name="MaxNumber" Type="float" />
+          <Property Name="DecimalPoints" Type="int" />
+          <Property Name="AllowedValues" Type="longtext" />
+          <Property Name="ColumnAlignment" Type="int" />
+          <Property Name="ColumnWidth" Type="int" />
+          <Property Name="Updated" Type="bool" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="FormattingEnabled" Type="bool" />
+        </EntityType>
+        <EntityType Name="studentclass">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="YearID" />
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="YearID" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="studentindicators">
+          <Key>
+            <PropertyRef Name="StudentIndicatorID" />
+          </Key>
+          <Property Name="StudentIndicatorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="IndicatorID" Type="int" />
+          <Property Name="SchoolID" Type="int" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="studentID" />
+          </Key>
+          <Property Name="studentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="50" />
+          <Property Name="middlename" Type="varchar" MaxLength="50" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" />
+          <Property Name="preferredname" Type="varchar" MaxLength="255" />
+          <Property Name="birthdate" Type="datetime" Precision="0" />
+          <Property Name="notes" Type="varchar" MaxLength="255" />
+          <Property Name="male" Type="bool" />
+          <Property Name="photopresent" Type="bool" />
+          <Property Name="photosize" Type="int" />
+          <Property Name="photo" Type="longblob" />
+          <Property Name="classID" Type="int" />
+          <Property Name="yearID" Type="int" />
+          <Property Name="locked" Type="bool" />
+          <Property Name="NotesLong" Type="longtext" />
+          <Property Name="NotesLong2" Type="longtext" />
+          <Property Name="houseID" Type="int" />
+          <Property Name="StudentIndicators" Type="longtext" />
+          <Property Name="LastEdited" Type="datetime" Precision="0" />
+          <Property Name="OfflineEdit" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="ShowToParent" Type="bool" />
+          <Property Name="Registration" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="teacherclass">
+          <Key>
+            <PropertyRef Name="TeacherClassID" />
+          </Key>
+          <Property Name="TeacherClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YearID" Type="int" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="Term" Type="int" />
+          <Property Name="AssessmentID" Type="int" />
+          <Property Name="TeacherID" Type="int" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Week" Type="int" />
+          <Property Name="Semester" Type="int" />
+        </EntityType>
+        <EntityType Name="teachers">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fullname" Type="varchar" MaxLength="255" />
+          <Property Name="Comments" Type="varchar" MaxLength="255" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="usergroups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupDescription" Type="varchar" MaxLength="255" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="Header" Type="bool" />
+          <Property Name="HeaderID" Type="int" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="FullName" Type="varchar" MaxLength="255" />
+          <Property Name="AccessLevel" Type="varchar" MaxLength="50" />
+          <Property Name="LoggedIn" Type="bool" />
+          <Property Name="LoggedInDateTime" Type="datetime" Precision="0" />
+          <Property Name="Active" Type="bool" />
+          <Property Name="AllowOffline" Type="bool" />
+          <Property Name="ClassList" Type="varchar" MaxLength="255" />
+          <Property Name="HeaderList" Type="varchar" MaxLength="255" />
+          <Property Name="ClassListNew" Type="longtext" />
+          <Property Name="HeaderListNew" Type="longtext" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="IndicatorListNew" Type="longtext" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="ClassIDsForCurrentYear" Type="varchar" MaxLength="255" />
+          <Property Name="MailServerUsername" Type="varchar" MaxLength="255" />
+          <Property Name="MailServerPassword" Type="varchar" MaxLength="255" />
+          <Property Name="LastSettingsRefreshed" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="userselections">
+          <Key>
+            <PropertyRef Name="UserSelectionID" />
+          </Key>
+          <Property Name="UserSelectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Section" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Value" Type="varchar" MaxLength="255" />
+          <Property Name="ValueLong" Type="longtext" />
+        </EntityType>
+        <EntityType Name="years">
+          <Key>
+            <PropertyRef Name="yearID" />
+          </Key>
+          <Property Name="yearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="year" Type="varchar" MaxLength="4" />
+          <Property Name="RowOrder" Type="int" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="ShowToParent" Type="bool" />
+        </EntityType>
+        <EntityContainer Name="GradexpertModelStoreContainer">
+          <EntitySet Name="accesslevels" EntityType="Self.accesslevels" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="assessmentresultcalculated" EntityType="Self.assessmentresultcalculated" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="assessmentresulttypes" EntityType="Self.assessmentresulttypes" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="assessmentresultvalues" EntityType="Self.assessmentresultvalues" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="assessments" EntityType="Self.assessments" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="attendance" EntityType="Self.attendance" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="attendancereason" EntityType="Self.attendancereason" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="classes" EntityType="Self.classes" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="indicators" EntityType="Self.indicators" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="mapdetail" EntityType="Self.mapdetail" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="mapheader" EntityType="Self.mapheader" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="results" EntityType="Self.results" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="resulttypes" EntityType="Self.resulttypes" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="studentclass" EntityType="Self.studentclass" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="studentindicators" EntityType="Self.studentindicators" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="students" EntityType="Self.students" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="teacherclass" EntityType="Self.teacherclass" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="teachers" EntityType="Self.teachers" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="usergroups" EntityType="Self.usergroups" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="userselections" EntityType="Self.userselections" Schema="gradexpert" store:Type="Tables" />
+          <EntitySet Name="years" EntityType="Self.years" Schema="gradexpert" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GradexpertModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="accesslevel">
+          <Key>
+            <PropertyRef Name="FunctionID" />
+          </Key>
+          <Property Name="FunctionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FunctionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AccessLevelRequired" Type="Int32" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="Header" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="assessmentresultcalculated">
+          <Key>
+            <PropertyRef Name="ResultTypeCalcID" />
+          </Key>
+          <Property Name="ResultTypeCalcID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentID" Type="Int32" />
+          <Property Name="ResultOrder" Type="Single" />
+          <Property Name="CalculatedTypeID" Type="Int32" />
+          <Property Name="ShortDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LongDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ResultTypeID1" Type="Int32" />
+          <Property Name="ResultTypeID2" Type="Int32" />
+          <Property Name="ResultTypeID3" Type="Int32" />
+          <Property Name="ResultTypeID4" Type="Int32" />
+          <Property Name="ResultTypeID5" Type="Int32" />
+          <Property Name="ResultTypeID6" Type="Int32" />
+          <Property Name="ResultTypeID7" Type="Int32" />
+          <Property Name="ResultTypeID8" Type="Int32" />
+          <Property Name="ResultTypeID9" Type="Int32" />
+          <Property Name="ResultTypeID10" Type="Int32" />
+          <Property Name="ResultTypeID11" Type="Int32" />
+          <Property Name="Percentage" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="OperatorTypeID1" Type="Int32" />
+          <Property Name="Value1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperatorTypeID2" Type="Int32" />
+          <Property Name="Value2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperatorTypeID3" Type="Int32" />
+          <Property Name="Value3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperatorTypeID4" Type="Int32" />
+          <Property Name="Value4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FinalResult" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FinalColour" Type="Int32" />
+          <Property Name="FinalValueToGraph" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ColumnAlignment" Type="Int32" />
+          <Property Name="ColumnWidth" Type="Int32" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="FormattingEnabled" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="assessmentresulttype">
+          <Key>
+            <PropertyRef Name="AssessmentID" />
+            <PropertyRef Name="ResultTypeID" />
+          </Key>
+          <Property Name="AssessmentID" Type="Int32" Nullable="false" />
+          <Property Name="ResultType" Type="Int32" />
+          <Property Name="ResultTypeID" Type="Int32" Nullable="false" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="UseDefaultValues" Type="Boolean" />
+          <Property Name="MinNumber" Type="Single" />
+          <Property Name="MaxNumber" Type="Single" />
+          <Property Name="DecimalPoints" Type="Int32" />
+          <Property Name="AllowedValues" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="Updated" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="ShowToParent" Type="Boolean" />
+          <Property Name="ShowToParentGraph" Type="Boolean" />
+          <Property Name="FormattingEnabled" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="assessmentresultvalue">
+          <Key>
+            <PropertyRef Name="ResultValueID" />
+          </Key>
+          <Property Name="ResultValueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResultID" Type="Int32" />
+          <Property Name="ResultTypeID" Type="Int32" />
+          <Property Name="ResultValue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastEdited" Type="DateTime" />
+          <Property Name="OfflineAdd" Type="Boolean" />
+          <Property Name="OfflineEdit" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="assessment">
+          <Key>
+            <PropertyRef Name="AssessmentID" />
+          </Key>
+          <Property Name="AssessmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentAssessmentID" Type="Int32" />
+          <Property Name="Header" Type="Boolean" />
+          <Property Name="HeaderID" Type="Int32" />
+          <Property Name="Composite" Type="Boolean" />
+          <Property Name="SubAssessment" Type="Boolean" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="AssessmentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MaximumScore" Type="Single" />
+          <Property Name="DecimalPoints" Type="Int32" />
+          <Property Name="AccessLevelRequired" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AllowAttachments" Type="Boolean" />
+          <Property Name="StoreAttachments" Type="Boolean" />
+          <Property Name="ExtendedDescription" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="NotesMaxLength" Type="Int32" />
+          <Property Name="StudentReportItem" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="DefaultColour" Type="Int32" />
+          <Property Name="ShowToParent" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="attendance">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+          </Key>
+          <Property Name="AttendanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttendanceDate" Type="DateTime" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="StudentID" Type="Int32" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="Status_AM" Type="SByte" />
+          <Property Name="ReasonID_AM" Type="Int32" />
+          <Property Name="Status_PM" Type="SByte" />
+          <Property Name="ReasonID_PM" Type="Int32" />
+        </EntityType>
+        <EntityType Name="attendancereason">
+          <Key>
+            <PropertyRef Name="ReasonID" />
+          </Key>
+          <Property Name="ReasonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReasonCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="CountToAbsenceTotals" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="class">
+          <Key>
+            <PropertyRef Name="classID" />
+          </Key>
+          <Property Name="classID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grade" Type="Int32" />
+          <Property Name="classname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="indicator">
+          <Key>
+            <PropertyRef Name="IndicatorID" />
+          </Key>
+          <Property Name="IndicatorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndicatorDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="Header" Type="Boolean" />
+          <Property Name="HeaderID" Type="Int32" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="FinalColour" Type="Int32" />
+        </EntityType>
+        <EntityType Name="mapdetail">
+          <Key>
+            <PropertyRef Name="MapDetailID" />
+          </Key>
+          <Property Name="MapDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MapHeaderID" Type="Int32" />
+          <Property Name="AssessmentID" Type="Int32" />
+          <Property Name="ResultTypeID" Type="Int32" />
+          <Property Name="ColourFormatType" Type="Int32" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="YearID" Type="Int32" />
+          <Property Name="Term" Type="Int32" />
+          <Property Name="Semester" Type="Int32" />
+          <Property Name="Attendance" Type="Boolean" />
+          <Property Name="EffectSize" Type="Boolean" />
+          <Property Name="Growth" Type="Boolean" />
+          <Property Name="IndicatorID" Type="Int32" />
+          <Property Name="TeacherNameRequired" Type="SByte" />
+          <Property Name="AllowEdit" Type="SByte" />
+          <Property Name="Week" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="PageHeaderID" Type="Int32" />
+          <Property Name="IncludePreviousTerms" Type="Int32" />
+          <Property Name="IncludePreviousSemesters" Type="Int32" />
+          <Property Name="ResultTypeIDs" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="mapheader">
+          <Key>
+            <PropertyRef Name="MapHeaderID" />
+          </Key>
+          <Property Name="MapHeaderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ExtendedDescription" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="AvailableToAll" Type="Boolean" />
+          <Property Name="YearID" Type="Int32" />
+          <Property Name="Term" Type="Int32" />
+          <Property Name="Semester" Type="Int32" />
+          <Property Name="HideHeaders" Type="Boolean" />
+          <Property Name="Week" Type="Int32" />
+          <Property Name="UserIDs" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="DefaultReportLayoutID" Type="Int32" />
+          <Property Name="OfflineEdit" Type="Boolean" />
+          <Property Name="OfflineAdd" Type="Boolean" />
+          <Property Name="LastEdited" Type="DateTime" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="MapGroupID" Type="Int32" />
+          <Property Name="ShowStdDeviation" Type="Boolean" />
+          <Property Name="ShowMedian" Type="Boolean" />
+          <Property Name="ShowMean" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="result">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="YearID" Type="Int32" />
+          <Property Name="Term" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Week" Type="Int32" />
+          <Property Name="Semester" Type="Int32" />
+          <Property Name="AssessmentID" Type="Int32" />
+          <Property Name="AssessmentDate" Type="DateTime" />
+          <Property Name="DateEntered" Type="DateTime" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Locked" Type="Boolean" />
+          <Property Name="NotesLong" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="NoteHeaderID" Type="Int32" />
+          <Property Name="LastEdited" Type="DateTime" />
+          <Property Name="ImportID" Type="Int32" />
+          <Property Name="OfflineAdd" Type="Boolean" />
+          <Property Name="OfflineEdit" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="resulttype">
+          <Key>
+            <PropertyRef Name="ResultTypeID" />
+          </Key>
+          <Property Name="ResultTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortDescription" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LongDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ExtendedDescription" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="AllowNumber" Type="Boolean" />
+          <Property Name="AllowLetter" Type="Boolean" />
+          <Property Name="AllowAll" Type="Boolean" />
+          <Property Name="AgeLevel" Type="Boolean" />
+          <Property Name="SelectFromList" Type="Boolean" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="MinNumber" Type="Single" />
+          <Property Name="MaxNumber" Type="Single" />
+          <Property Name="DecimalPoints" Type="Int32" />
+          <Property Name="AllowedValues" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="ColumnAlignment" Type="Int32" />
+          <Property Name="ColumnWidth" Type="Int32" />
+          <Property Name="Updated" Type="Boolean" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="FormattingEnabled" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="studentclass">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="YearID" />
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="YearID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="studentindicator">
+          <Key>
+            <PropertyRef Name="StudentIndicatorID" />
+          </Key>
+          <Property Name="StudentIndicatorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" />
+          <Property Name="IndicatorID" Type="Int32" />
+          <Property Name="SchoolID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="studentID" />
+          </Key>
+          <Property Name="studentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="middlename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="preferredname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="birthdate" Type="DateTime" />
+          <Property Name="notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="male" Type="Boolean" />
+          <Property Name="photopresent" Type="Boolean" />
+          <Property Name="photosize" Type="Int32" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="classID" Type="Int32" />
+          <Property Name="yearID" Type="Int32" />
+          <Property Name="locked" Type="Boolean" />
+          <Property Name="NotesLong" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="NotesLong2" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="houseID" Type="Int32" />
+          <Property Name="StudentIndicators" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="LastEdited" Type="DateTime" />
+          <Property Name="OfflineEdit" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="ShowToParent" Type="Boolean" />
+          <Property Name="Registration" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="teacherclass">
+          <Key>
+            <PropertyRef Name="TeacherClassID" />
+          </Key>
+          <Property Name="TeacherClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YearID" Type="Int32" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="Term" Type="Int32" />
+          <Property Name="AssessmentID" Type="Int32" />
+          <Property Name="TeacherID" Type="Int32" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Week" Type="Int32" />
+          <Property Name="Semester" Type="Int32" />
+        </EntityType>
+        <EntityType Name="teacher">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="usergroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="Header" Type="Boolean" />
+          <Property Name="HeaderID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AccessLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoggedIn" Type="Boolean" />
+          <Property Name="LoggedInDateTime" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="AllowOffline" Type="Boolean" />
+          <Property Name="ClassList" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderList" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ClassListNew" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderListNew" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="IndicatorListNew" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClassIDsForCurrentYear" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MailServerUsername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MailServerPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastSettingsRefreshed" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="userselection">
+          <Key>
+            <PropertyRef Name="UserSelectionID" />
+          </Key>
+          <Property Name="UserSelectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ValueLong" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="year">
+          <Key>
+            <PropertyRef Name="yearID" />
+          </Key>
+          <Property Name="yearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="year1" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="RowOrder" Type="Int32" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="ShowToParent" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="GradexpertEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accesslevels" EntityType="Self.accesslevel" />
+          <EntitySet Name="assessmentresultcalculateds" EntityType="Self.assessmentresultcalculated" />
+          <EntitySet Name="assessmentresulttypes" EntityType="Self.assessmentresulttype" />
+          <EntitySet Name="assessmentresultvalues" EntityType="Self.assessmentresultvalue" />
+          <EntitySet Name="assessments" EntityType="Self.assessment" />
+          <EntitySet Name="attendances" EntityType="Self.attendance" />
+          <EntitySet Name="attendancereasons" EntityType="Self.attendancereason" />
+          <EntitySet Name="classes" EntityType="Self.class" />
+          <EntitySet Name="indicators" EntityType="Self.indicator" />
+          <EntitySet Name="mapdetails" EntityType="Self.mapdetail" />
+          <EntitySet Name="mapheaders" EntityType="Self.mapheader" />
+          <EntitySet Name="results" EntityType="Self.result" />
+          <EntitySet Name="resulttypes" EntityType="Self.resulttype" />
+          <EntitySet Name="studentclasses" EntityType="Self.studentclass" />
+          <EntitySet Name="studentindicators" EntityType="Self.studentindicator" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="teacherclasses" EntityType="Self.teacherclass" />
+          <EntitySet Name="teachers" EntityType="Self.teacher" />
+          <EntitySet Name="usergroups" EntityType="Self.usergroup" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="userselections" EntityType="Self.userselection" />
+          <EntitySet Name="years" EntityType="Self.year" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GradexpertModelStoreContainer" CdmEntityContainer="GradexpertEntities">
+          <EntitySetMapping Name="accesslevels">
+            <EntityTypeMapping TypeName="GradexpertModel.accesslevel">
+              <MappingFragment StoreEntitySet="accesslevels">
+                <ScalarProperty Name="FunctionID" ColumnName="FunctionID" />
+                <ScalarProperty Name="FunctionCode" ColumnName="FunctionCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AccessLevelRequired" ColumnName="AccessLevelRequired" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="Header" ColumnName="Header" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assessmentresultcalculateds">
+            <EntityTypeMapping TypeName="GradexpertModel.assessmentresultcalculated">
+              <MappingFragment StoreEntitySet="assessmentresultcalculated">
+                <ScalarProperty Name="ResultTypeCalcID" ColumnName="ResultTypeCalcID" />
+                <ScalarProperty Name="AssessmentID" ColumnName="AssessmentID" />
+                <ScalarProperty Name="ResultOrder" ColumnName="ResultOrder" />
+                <ScalarProperty Name="CalculatedTypeID" ColumnName="CalculatedTypeID" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ResultTypeID1" ColumnName="ResultTypeID1" />
+                <ScalarProperty Name="ResultTypeID2" ColumnName="ResultTypeID2" />
+                <ScalarProperty Name="ResultTypeID3" ColumnName="ResultTypeID3" />
+                <ScalarProperty Name="ResultTypeID4" ColumnName="ResultTypeID4" />
+                <ScalarProperty Name="ResultTypeID5" ColumnName="ResultTypeID5" />
+                <ScalarProperty Name="ResultTypeID6" ColumnName="ResultTypeID6" />
+                <ScalarProperty Name="ResultTypeID7" ColumnName="ResultTypeID7" />
+                <ScalarProperty Name="ResultTypeID8" ColumnName="ResultTypeID8" />
+                <ScalarProperty Name="ResultTypeID9" ColumnName="ResultTypeID9" />
+                <ScalarProperty Name="ResultTypeID10" ColumnName="ResultTypeID10" />
+                <ScalarProperty Name="ResultTypeID11" ColumnName="ResultTypeID11" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="OperatorTypeID1" ColumnName="OperatorTypeID1" />
+                <ScalarProperty Name="Value1" ColumnName="Value1" />
+                <ScalarProperty Name="OperatorTypeID2" ColumnName="OperatorTypeID2" />
+                <ScalarProperty Name="Value2" ColumnName="Value2" />
+                <ScalarProperty Name="OperatorTypeID3" ColumnName="OperatorTypeID3" />
+                <ScalarProperty Name="Value3" ColumnName="Value3" />
+                <ScalarProperty Name="OperatorTypeID4" ColumnName="OperatorTypeID4" />
+                <ScalarProperty Name="Value4" ColumnName="Value4" />
+                <ScalarProperty Name="FinalResult" ColumnName="FinalResult" />
+                <ScalarProperty Name="FinalColour" ColumnName="FinalColour" />
+                <ScalarProperty Name="FinalValueToGraph" ColumnName="FinalValueToGraph" />
+                <ScalarProperty Name="ColumnAlignment" ColumnName="ColumnAlignment" />
+                <ScalarProperty Name="ColumnWidth" ColumnName="ColumnWidth" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="FormattingEnabled" ColumnName="FormattingEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assessmentresulttypes">
+            <EntityTypeMapping TypeName="GradexpertModel.assessmentresulttype">
+              <MappingFragment StoreEntitySet="assessmentresulttypes">
+                <ScalarProperty Name="AssessmentID" ColumnName="AssessmentID" />
+                <ScalarProperty Name="ResultType" ColumnName="ResultType" />
+                <ScalarProperty Name="ResultTypeID" ColumnName="ResultTypeID" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="UseDefaultValues" ColumnName="UseDefaultValues" />
+                <ScalarProperty Name="MinNumber" ColumnName="MinNumber" />
+                <ScalarProperty Name="MaxNumber" ColumnName="MaxNumber" />
+                <ScalarProperty Name="DecimalPoints" ColumnName="DecimalPoints" />
+                <ScalarProperty Name="AllowedValues" ColumnName="AllowedValues" />
+                <ScalarProperty Name="Updated" ColumnName="Updated" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="ShowToParent" ColumnName="ShowToParent" />
+                <ScalarProperty Name="ShowToParentGraph" ColumnName="ShowToParentGraph" />
+                <ScalarProperty Name="FormattingEnabled" ColumnName="FormattingEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assessmentresultvalues">
+            <EntityTypeMapping TypeName="GradexpertModel.assessmentresultvalue">
+              <MappingFragment StoreEntitySet="assessmentresultvalues">
+                <ScalarProperty Name="ResultValueID" ColumnName="ResultValueID" />
+                <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+                <ScalarProperty Name="ResultTypeID" ColumnName="ResultTypeID" />
+                <ScalarProperty Name="ResultValue" ColumnName="ResultValue" />
+                <ScalarProperty Name="LastEdited" ColumnName="LastEdited" />
+                <ScalarProperty Name="OfflineAdd" ColumnName="OfflineAdd" />
+                <ScalarProperty Name="OfflineEdit" ColumnName="OfflineEdit" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assessments">
+            <EntityTypeMapping TypeName="GradexpertModel.assessment">
+              <MappingFragment StoreEntitySet="assessments">
+                <ScalarProperty Name="AssessmentID" ColumnName="AssessmentID" />
+                <ScalarProperty Name="ParentAssessmentID" ColumnName="ParentAssessmentID" />
+                <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
+                <ScalarProperty Name="Composite" ColumnName="Composite" />
+                <ScalarProperty Name="SubAssessment" ColumnName="SubAssessment" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="AssessmentCode" ColumnName="AssessmentCode" />
+                <ScalarProperty Name="MaximumScore" ColumnName="MaximumScore" />
+                <ScalarProperty Name="DecimalPoints" ColumnName="DecimalPoints" />
+                <ScalarProperty Name="AccessLevelRequired" ColumnName="AccessLevelRequired" />
+                <ScalarProperty Name="AllowAttachments" ColumnName="AllowAttachments" />
+                <ScalarProperty Name="StoreAttachments" ColumnName="StoreAttachments" />
+                <ScalarProperty Name="ExtendedDescription" ColumnName="ExtendedDescription" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="NotesMaxLength" ColumnName="NotesMaxLength" />
+                <ScalarProperty Name="StudentReportItem" ColumnName="StudentReportItem" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="DefaultColour" ColumnName="DefaultColour" />
+                <ScalarProperty Name="ShowToParent" ColumnName="ShowToParent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="attendances">
+            <EntityTypeMapping TypeName="GradexpertModel.attendance">
+              <MappingFragment StoreEntitySet="attendance">
+                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="Status_AM" ColumnName="Status_AM" />
+                <ScalarProperty Name="ReasonID_AM" ColumnName="ReasonID_AM" />
+                <ScalarProperty Name="Status_PM" ColumnName="Status_PM" />
+                <ScalarProperty Name="ReasonID_PM" ColumnName="ReasonID_PM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="attendancereasons">
+            <EntityTypeMapping TypeName="GradexpertModel.attendancereason">
+              <MappingFragment StoreEntitySet="attendancereason">
+                <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+                <ScalarProperty Name="ReasonCode" ColumnName="ReasonCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="CountToAbsenceTotals" ColumnName="CountToAbsenceTotals" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="classes">
+            <EntityTypeMapping TypeName="GradexpertModel.class">
+              <MappingFragment StoreEntitySet="classes">
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+                <ScalarProperty Name="classname" ColumnName="classname" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="indicators">
+            <EntityTypeMapping TypeName="GradexpertModel.indicator">
+              <MappingFragment StoreEntitySet="indicators">
+                <ScalarProperty Name="IndicatorID" ColumnName="IndicatorID" />
+                <ScalarProperty Name="IndicatorDescription" ColumnName="IndicatorDescription" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="FinalColour" ColumnName="FinalColour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mapdetails">
+            <EntityTypeMapping TypeName="GradexpertModel.mapdetail">
+              <MappingFragment StoreEntitySet="mapdetail">
+                <ScalarProperty Name="MapDetailID" ColumnName="MapDetailID" />
+                <ScalarProperty Name="MapHeaderID" ColumnName="MapHeaderID" />
+                <ScalarProperty Name="AssessmentID" ColumnName="AssessmentID" />
+                <ScalarProperty Name="ResultTypeID" ColumnName="ResultTypeID" />
+                <ScalarProperty Name="ColourFormatType" ColumnName="ColourFormatType" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="Attendance" ColumnName="Attendance" />
+                <ScalarProperty Name="EffectSize" ColumnName="EffectSize" />
+                <ScalarProperty Name="Growth" ColumnName="Growth" />
+                <ScalarProperty Name="IndicatorID" ColumnName="IndicatorID" />
+                <ScalarProperty Name="TeacherNameRequired" ColumnName="TeacherNameRequired" />
+                <ScalarProperty Name="AllowEdit" ColumnName="AllowEdit" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="PageHeaderID" ColumnName="PageHeaderID" />
+                <ScalarProperty Name="IncludePreviousTerms" ColumnName="IncludePreviousTerms" />
+                <ScalarProperty Name="IncludePreviousSemesters" ColumnName="IncludePreviousSemesters" />
+                <ScalarProperty Name="ResultTypeIDs" ColumnName="ResultTypeIDs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mapheaders">
+            <EntityTypeMapping TypeName="GradexpertModel.mapheader">
+              <MappingFragment StoreEntitySet="mapheader">
+                <ScalarProperty Name="MapHeaderID" ColumnName="MapHeaderID" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExtendedDescription" ColumnName="ExtendedDescription" />
+                <ScalarProperty Name="AvailableToAll" ColumnName="AvailableToAll" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="HideHeaders" ColumnName="HideHeaders" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="UserIDs" ColumnName="UserIDs" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="DefaultReportLayoutID" ColumnName="DefaultReportLayoutID" />
+                <ScalarProperty Name="OfflineEdit" ColumnName="OfflineEdit" />
+                <ScalarProperty Name="OfflineAdd" ColumnName="OfflineAdd" />
+                <ScalarProperty Name="LastEdited" ColumnName="LastEdited" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="MapGroupID" ColumnName="MapGroupID" />
+                <ScalarProperty Name="ShowStdDeviation" ColumnName="ShowStdDeviation" />
+                <ScalarProperty Name="ShowMedian" ColumnName="ShowMedian" />
+                <ScalarProperty Name="ShowMean" ColumnName="ShowMean" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="results">
+            <EntityTypeMapping TypeName="GradexpertModel.result">
+              <MappingFragment StoreEntitySet="results">
+                <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="AssessmentID" ColumnName="AssessmentID" />
+                <ScalarProperty Name="AssessmentDate" ColumnName="AssessmentDate" />
+                <ScalarProperty Name="DateEntered" ColumnName="DateEntered" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="NotesLong" ColumnName="NotesLong" />
+                <ScalarProperty Name="NoteHeaderID" ColumnName="NoteHeaderID" />
+                <ScalarProperty Name="LastEdited" ColumnName="LastEdited" />
+                <ScalarProperty Name="ImportID" ColumnName="ImportID" />
+                <ScalarProperty Name="OfflineAdd" ColumnName="OfflineAdd" />
+                <ScalarProperty Name="OfflineEdit" ColumnName="OfflineEdit" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resulttypes">
+            <EntityTypeMapping TypeName="GradexpertModel.resulttype">
+              <MappingFragment StoreEntitySet="resulttypes">
+                <ScalarProperty Name="ResultTypeID" ColumnName="ResultTypeID" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ExtendedDescription" ColumnName="ExtendedDescription" />
+                <ScalarProperty Name="AllowNumber" ColumnName="AllowNumber" />
+                <ScalarProperty Name="AllowLetter" ColumnName="AllowLetter" />
+                <ScalarProperty Name="AllowAll" ColumnName="AllowAll" />
+                <ScalarProperty Name="AgeLevel" ColumnName="AgeLevel" />
+                <ScalarProperty Name="SelectFromList" ColumnName="SelectFromList" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="MinNumber" ColumnName="MinNumber" />
+                <ScalarProperty Name="MaxNumber" ColumnName="MaxNumber" />
+                <ScalarProperty Name="DecimalPoints" ColumnName="DecimalPoints" />
+                <ScalarProperty Name="AllowedValues" ColumnName="AllowedValues" />
+                <ScalarProperty Name="ColumnAlignment" ColumnName="ColumnAlignment" />
+                <ScalarProperty Name="ColumnWidth" ColumnName="ColumnWidth" />
+                <ScalarProperty Name="Updated" ColumnName="Updated" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="FormattingEnabled" ColumnName="FormattingEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studentclasses">
+            <EntityTypeMapping TypeName="GradexpertModel.studentclass">
+              <MappingFragment StoreEntitySet="studentclass">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studentindicators">
+            <EntityTypeMapping TypeName="GradexpertModel.studentindicator">
+              <MappingFragment StoreEntitySet="studentindicators">
+                <ScalarProperty Name="StudentIndicatorID" ColumnName="StudentIndicatorID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="IndicatorID" ColumnName="IndicatorID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="GradexpertModel.student">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="studentCode" ColumnName="studentCode" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="middlename" ColumnName="middlename" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="preferredname" ColumnName="preferredname" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="male" ColumnName="male" />
+                <ScalarProperty Name="photopresent" ColumnName="photopresent" />
+                <ScalarProperty Name="photosize" ColumnName="photosize" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="yearID" ColumnName="yearID" />
+                <ScalarProperty Name="locked" ColumnName="locked" />
+                <ScalarProperty Name="NotesLong" ColumnName="NotesLong" />
+                <ScalarProperty Name="NotesLong2" ColumnName="NotesLong2" />
+                <ScalarProperty Name="houseID" ColumnName="houseID" />
+                <ScalarProperty Name="StudentIndicators" ColumnName="StudentIndicators" />
+                <ScalarProperty Name="LastEdited" ColumnName="LastEdited" />
+                <ScalarProperty Name="OfflineEdit" ColumnName="OfflineEdit" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="ShowToParent" ColumnName="ShowToParent" />
+                <ScalarProperty Name="Registration" ColumnName="Registration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teacherclasses">
+            <EntityTypeMapping TypeName="GradexpertModel.teacherclass">
+              <MappingFragment StoreEntitySet="teacherclass">
+                <ScalarProperty Name="TeacherClassID" ColumnName="TeacherClassID" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="AssessmentID" ColumnName="AssessmentID" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teachers">
+            <EntityTypeMapping TypeName="GradexpertModel.teacher">
+              <MappingFragment StoreEntitySet="teachers">
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usergroups">
+            <EntityTypeMapping TypeName="GradexpertModel.usergroup">
+              <MappingFragment StoreEntitySet="usergroups">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="GradexpertModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+                <ScalarProperty Name="LoggedIn" ColumnName="LoggedIn" />
+                <ScalarProperty Name="LoggedInDateTime" ColumnName="LoggedInDateTime" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="AllowOffline" ColumnName="AllowOffline" />
+                <ScalarProperty Name="ClassList" ColumnName="ClassList" />
+                <ScalarProperty Name="HeaderList" ColumnName="HeaderList" />
+                <ScalarProperty Name="ClassListNew" ColumnName="ClassListNew" />
+                <ScalarProperty Name="HeaderListNew" ColumnName="HeaderListNew" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="IndicatorListNew" ColumnName="IndicatorListNew" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ClassIDsForCurrentYear" ColumnName="ClassIDsForCurrentYear" />
+                <ScalarProperty Name="MailServerUsername" ColumnName="MailServerUsername" />
+                <ScalarProperty Name="MailServerPassword" ColumnName="MailServerPassword" />
+                <ScalarProperty Name="LastSettingsRefreshed" ColumnName="LastSettingsRefreshed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userselections">
+            <EntityTypeMapping TypeName="GradexpertModel.userselection">
+              <MappingFragment StoreEntitySet="userselections">
+                <ScalarProperty Name="UserSelectionID" ColumnName="UserSelectionID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ValueLong" ColumnName="ValueLong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="years">
+            <EntityTypeMapping TypeName="GradexpertModel.year">
+              <MappingFragment StoreEntitySet="years">
+                <ScalarProperty Name="yearID" ColumnName="yearID" />
+                <ScalarProperty Name="year1" ColumnName="year" />
+                <ScalarProperty Name="RowOrder" ColumnName="RowOrder" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="ShowToParent" ColumnName="ShowToParent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
